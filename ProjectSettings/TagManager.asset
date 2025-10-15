@@ -13,6 +13,8 @@ TagManager:
   - Ground
   - pathway
   - Interface
+  - TowerBoom
+  - TowerZap
   layers:
   - Default
   - TransparentFX

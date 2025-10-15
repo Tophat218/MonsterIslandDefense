@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
 
     public int Towertype;
     public int monies;
-    [SerializeField] private int lvl = 1;
+    [SerializeField] private int lvl = 4;
 
     public GameObject enemyScout;
     public GameObject enemyTank;
@@ -67,27 +67,76 @@ public class UIController : MonoBehaviour
     {
         //onGameOver();
         begin.enabled = false;
-        for (int i = 0; i <= lvl; i++)
+        List<GameObject> enemies = new List<GameObject>();
+        GameObject pulse = GameObject.FindWithTag("PowAttack");
+        GameObject boom = GameObject.FindWithTag("TowerBoom");
+        GameObject zap = GameObject.FindWithTag("TowerZap");
+        int normal = 1;
+        int tankNum = 0;
+        int cyoteNum = 0;
+        if (pulse != null)
         {
-            int rand = Random.Range(0, 4);
-            if (rand == 0)
+            cyoteNum += 1;
+        }
+        if (boom != null)
+        {
+            normal += 1;
+        }
+        if (zap != null)
+        {
+            tankNum += 1;
+        }
+
+        normal = normal * lvl;
+        tankNum = tankNum + lvl;
+        cyoteNum = cyoteNum + lvl;
+
+        for (int i = 0; i <= normal; i++)
+        {
+            enemies.Add(enemyScout);
+        }
+        for (int i = 0; i <= cyoteNum; i++)
+        {
+            enemies.Add(enemyCyote);
+        }
+        for (int i = 0; i <= tankNum; i++)
+        {
+            enemies.Add(enemyTank);
+        }
+
+        int counter = 1;
+        foreach (var monster in enemies)
+        {
+            if (counter == 1)
             {
-                GameObject enemy = Instantiate(enemyScout, gameMap.GetComponent<GenTerrain>().portal1Coords,
+                counter++;
+                GameObject enemy = Instantiate(monster, gameMap.GetComponent<GenTerrain>().portal1Coords,
                     Quaternion.identity);
-            }else if (rand == 1)
+            }else if (counter == 2)
             {
-                GameObject enemy = Instantiate(enemyScout, gameMap.GetComponent<GenTerrain>().portal2Coords,
+                counter++;
+                GameObject enemy = Instantiate(monster, gameMap.GetComponent<GenTerrain>().portal2Coords,
                     Quaternion.identity);
-            }else if (rand == 2)
+            }else if (counter == 3)
             {
-                GameObject enemy = Instantiate(enemyScout, gameMap.GetComponent<GenTerrain>().portal3Coords,
+                counter++;
+                GameObject enemy = Instantiate(monster, gameMap.GetComponent<GenTerrain>().portal3Coords,
                     Quaternion.identity);
-            }else if (rand == 3)
+            }else if (counter == 4)
             {
-                GameObject enemy = Instantiate(enemyScout, gameMap.GetComponent<GenTerrain>().portal4Coords,
+                counter = 1;
+                GameObject enemy = Instantiate(monster, gameMap.GetComponent<GenTerrain>().portal4Coords,
                     Quaternion.identity);
             }
-            
+            else
+            {
+                counter = 1;
+                GameObject enemy = Instantiate(monster, gameMap.GetComponent<GenTerrain>().portal4Coords,
+                    Quaternion.identity);
+            }
+
+            new WaitForSecondsRealtime(5f);
+
         }
         StartCoroutine(WaitingTillReady(10f));
         lvl++;
@@ -102,6 +151,7 @@ public class UIController : MonoBehaviour
     void onPulseClick()
     {
         price = pricePulse;
+        Towertype = 0;
         if (monies >= price)
         {
             placing = true;
@@ -116,6 +166,7 @@ public class UIController : MonoBehaviour
     void onStrikeClick()
     {
         price = priceStrike;
+        Towertype = 1;
         if (monies >= price)
         {
             placing = true;
@@ -129,6 +180,7 @@ public class UIController : MonoBehaviour
     void onZapClick()
     {
         price = priceZap;
+        Towertype = 3;
         if (monies >= price)
         {
             placing = true;

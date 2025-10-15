@@ -19,8 +19,25 @@ public class BuildingScript : MonoBehaviour
     {
         if (ui.GetComponent<UIController>().placing)
         {
-            
-            GameObject tower = Instantiate(pulse, gameObject.transform.position, Quaternion.identity);
+            GameObject temp;
+            if (ui.GetComponent<UIController>().Towertype == 0)
+            {
+                temp = pulse;
+            }else if (ui.GetComponent<UIController>().Towertype == 1)
+            {
+                temp = strike;
+            }else if (ui.GetComponent<UIController>().Towertype == 3)
+            {
+                temp = zap;
+            }
+            else
+            {
+                ui.GetComponent<UIController>().taunt.text = "No tower selected";
+                temp = null;
+                StartCoroutine(WaitingTillReady(5f));
+                return;
+            }
+            GameObject tower = Instantiate(temp, gameObject.transform.position, Quaternion.identity);
             ui.GetComponent<UIController>().placing = false;
             ui.GetComponent<UIController>().monies=ui.GetComponent<UIController>().monies-
                                                    ui.GetComponent<UIController>().price;

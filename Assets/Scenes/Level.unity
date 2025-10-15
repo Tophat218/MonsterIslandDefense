@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 266603950}
   - component: {fileID: 266603949}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ocean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1638,11 +1638,11 @@ MonoBehaviour:
   placeStrike: {fileID: 74990125}
   placeZap: {fileID: 1816581236}
   Towertype: 0
-  monies: 10
+  monies: 50
   lvl: 0
   enemyScout: {fileID: 4117923496883929345, guid: 84ed173925fe92043909d634800dbef4, type: 3}
-  enemyTank: {fileID: 4117923496883929345, guid: 84ed173925fe92043909d634800dbef4, type: 3}
-  enemyCyote: {fileID: 4117923496883929345, guid: 84ed173925fe92043909d634800dbef4, type: 3}
+  enemyTank: {fileID: 3914490037569589768, guid: dcae5bd9108d2c34e82c0fd4faaa54d1, type: 3}
+  enemyCyote: {fileID: 6338067991288558909, guid: a2c72be83bbd0e84fa0247f607dd911e, type: 3}
   gameMap: {fileID: 988893979}
   pricePulse: 5
   priceStrike: 10

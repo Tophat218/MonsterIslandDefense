@@ -99,8 +99,12 @@ public abstract class EnemyClass : MonoBehaviour
 
     public virtual void Move(GameObject destination)
     {
+        float speed = 1.0f;
         //Enemy chooses to move to nearest pathway 
         //that also gets them closer destination(Tower)
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward,
+            destination.transform.position - transform.position, speed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
         transform.position = Vector3.MoveTowards(transform.position, destination.transform.position, moveSpeed);
         if (transform.position == next.transform.position)
         {
