@@ -5,8 +5,11 @@ public class TowerBomb: MonoBehaviour
 {
     [SerializeField] private Material tick;
     [SerializeField] private Material tock;
+    [SerializeField] private int scale = 2;
     [SerializeField] private float sec = 5f;
     private float _time;
+    
+    
     private void Awake()
     {
         StartCoroutine(Countdown(sec));
@@ -19,7 +22,7 @@ public class TowerBomb: MonoBehaviour
     IEnumerator Countdown(float sec)
     {
         yield return new WaitForSecondsRealtime(sec);
-        gameObject.GetComponent<Transform>().localScale = new Vector3(2, 2, 2);
+        gameObject.GetComponent<Transform>().localScale = new Vector3(scale, scale, scale);
         yield return new WaitForSecondsRealtime(sec);
         Destroy(gameObject);
     }

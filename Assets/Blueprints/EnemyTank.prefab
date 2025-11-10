@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMap: {fileID: 0}
   next: {fileID: 0}
+  deathCloud: {fileID: 7499236638538419324, guid: ce86354ff51f687438117d7da425873b, type: 3}
   happend: 0
   body: {fileID: 6782206866136121273}
   good: {fileID: 2100000, guid: 34fb14b842283c146b3be4b69483b671, type: 2}

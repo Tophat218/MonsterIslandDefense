@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6305806168671198929}
-  - component: {fileID: 2384526282637708874}
   m_Layer: 0
   m_Name: BombTower
   m_TagString: TowerBoom
@@ -33,20 +32,6 @@ Transform:
   - {fileID: 6192946914639520657}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2384526282637708874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2824631391271523917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3dfa0b4680747d1afb6e3e3d361407f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bomb: {fileID: 720007927632165219, guid: 932415f156df8b1448a14cf62d44cd64, type: 3}
-  sec: 12
 --- !u!1 &4452842329186455307
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +43,9 @@ GameObject:
   - component: {fileID: 6192946914639520657}
   - component: {fileID: 6863397089816162481}
   - component: {fileID: 5294091330101619350}
+  - component: {fileID: 1809344089007157118}
+  - component: {fileID: 7418894776213793352}
+  - component: {fileID: 9062999296661485102}
   m_Layer: 0
   m_Name: BombsAway
   m_TagString: Untagged
@@ -136,3 +124,71 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1809344089007157118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452842329186455307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dfa0b4680747d1afb6e3e3d361407f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb: {fileID: 720007927632165219, guid: 932415f156df8b1448a14cf62d44cd64, type: 3}
+  newBomb: {fileID: 720007927632165219, guid: ac2c547ac128d064297a6d6f88e3f73b, type: 3}
+  sec: 10
+  ui: {fileID: 0}
+  tier: 0
+  up1: {fileID: 2100000, guid: de7b94ac25fed894fbeaa7566a33402c, type: 2}
+  up2: {fileID: 2100000, guid: 8a1f384a0de4e394aabd8e7889ea8fad, type: 2}
+  body: {fileID: 4452842329186455307}
+--- !u!54 &7418894776213793352
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452842329186455307}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &9062999296661485102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452842329186455307}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2410858, y: 3.1075187, z: 2.2470717}
+  m_Center: {x: 0, y: 1.4587686, z: -0.18684733}

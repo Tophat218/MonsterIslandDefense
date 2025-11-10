@@ -12,6 +12,7 @@ public abstract class EnemyClass : MonoBehaviour
     [SerializeField] private GameObject gameMap;
     private List<GameObject> genPath; 
     [SerializeField]private GameObject next;
+    [SerializeField] private GameObject deathCloud;
     private Vector3 startPoint;
     private Vector3 point1;
     private Vector3 point2;
@@ -50,6 +51,7 @@ public abstract class EnemyClass : MonoBehaviour
         if (health <= 0)
         {
             ui.GetComponent<UIController>().monies += reward;
+            GameObject cloud = Instantiate(deathCloud,gameObject.transform.position,Quaternion.identity);
             Destroy(gameObject);
         }
         Move(next);

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6649009866996734927}
   - component: {fileID: 6293365529913274284}
   - component: {fileID: 9150718838003230337}
+  - component: {fileID: 5603084637527158333}
+  - component: {fileID: 173027052763932415}
   m_Layer: 0
   m_Name: Shocker
   m_TagString: Untagged
@@ -111,6 +113,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.3974934, y: 4.363429, z: 2.3971922}
   m_Center: {x: -0.00000023841858, y: 2.053556, z: -0.015084505}
+--- !u!114 &5603084637527158333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834207169491880866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78acc3c99b747c18c09ef5fe76d6a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thunderBolt: {fileID: 8038423159810508189, guid: fba0f748f986f714296ac6777676bee0, type: 3}
+  newThunder: {fileID: 8038423159810508189, guid: 061584d3424d9e44e88007d663dae86a, type: 3}
+  target: {fileID: 0}
+  sec: 10
+  ui: {fileID: 0}
+  tier: 0
+  up1: {fileID: 2100000, guid: de7b94ac25fed894fbeaa7566a33402c, type: 2}
+  up2: {fileID: 2100000, guid: 8a1f384a0de4e394aabd8e7889ea8fad, type: 2}
+  body: {fileID: 3834207169491880866}
+--- !u!54 &173027052763932415
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834207169491880866}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5203668991528548200
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,8 +170,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3294567344018876101}
-  - component: {fileID: 1523083699660442031}
-  - component: {fileID: 7954006758263358501}
   m_Layer: 0
   m_Name: ShockTower
   m_TagString: TowerZap
@@ -145,45 +193,3 @@ Transform:
   - {fileID: 4953314504404405712}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1523083699660442031
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5203668991528548200}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &7954006758263358501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5203668991528548200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78acc3c99b747c18c09ef5fe76d6a1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thunderBolt: {fileID: 8038423159810508189, guid: fba0f748f986f714296ac6777676bee0, type: 3}
-  target: {fileID: 0}
-  sec: 10

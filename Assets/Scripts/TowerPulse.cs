@@ -1,49 +1,27 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
-public class TowerZap : MonoBehaviour
+public class TowerPulse : MonoBehaviour
 {
-    [SerializeField] private GameObject thunderBolt;
-    [SerializeField] private GameObject newThunder;
-    [SerializeField] private GameObject target;
-    [SerializeField] private float sec = 10f;
-    private float _time;
     public GameObject ui;
-    public int tier = 0;
+    public int tier=0;
     public Material up1;
 
     public Material up2;
 
     public GameObject body;
-
-    private void Awake()
+    public GameObject range;
+    public int num;
+    void Awake()
     {
-        _time = 0f;
         ui = GameObject.FindWithTag("Interface");
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        target = GameObject.FindWithTag("Enemy");
-        _time += Time.deltaTime;
-        while (_time >= sec)
-        {
-            FindTarget();
-            _time -= sec;
-        }
-    }
-
-    public void FindTarget()
-    {
-        if (target == null)
-        {
-            return;
-        }
-        else
-        {
-            GameObject zap = Instantiate(thunderBolt, target.transform.position,Quaternion.identity);
-        }
+        
     }
 
     private void OnMouseDown()
@@ -56,16 +34,18 @@ public class TowerZap : MonoBehaviour
                 if (tier !< 1)
                 {
                     tier = 1;
-                    sec = 5f;
-                    matCopy[3] = up1;
+                    num = 5;
+                    range.GetComponent<SphereCollider>().radius = num;
+                    matCopy[0] = up1;
                     gameObject.GetComponent<MeshRenderer>().materials = matCopy;
                     Debug.Log("Tier 1");
                 }
                 else
                 {
                     tier = 2;
-                    thunderBolt = newThunder;
-                    matCopy[3] = up2;
+                    num = 8;
+                    range.GetComponent<SphereCollider>().radius = num;
+                    matCopy[0] = up2;
                     gameObject.GetComponent<MeshRenderer>().materials = matCopy;
                     Debug.Log("Tier 2");
                 }

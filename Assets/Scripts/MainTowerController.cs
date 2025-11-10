@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class MainTowerController : MonoBehaviour
@@ -12,6 +13,14 @@ public class MainTowerController : MonoBehaviour
 
     [SerializeField] private int health = 10;
     public GameObject ui;
+
+    public int tier =0;
+
+    public Material up1;
+
+    public Material up2;
+
+    public GameObject body;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -64,5 +73,51 @@ public class MainTowerController : MonoBehaviour
                 Debug.Log(health + "gone wrong/dead");
             }
         }
+    }
+
+    private void OnMouseDown()
+    {
+        var matCopy = gameObject.GetComponent<MeshRenderer>().materials;
+        if (ui.GetComponent<UIController>().tierUp)
+        {
+            if (tier !< 2)
+            {
+                if (tier !< 1)
+                {
+                    tier = 1;
+                    health = 15;
+                    matCopy[0] = up1;
+                    gameObject.GetComponent<MeshRenderer>().materials = matCopy;
+                    Debug.Log("Tier 1");
+                }
+                else
+                {
+                    tier = 2;
+                    health = 20;
+                    matCopy[0] = up2;
+                    gameObject.GetComponent<MeshRenderer>().materials = matCopy;
+                    Debug.Log("Tier 2");
+                }
+            }
+            else
+            {
+                ui.GetComponent<UIController>().taunt.text = "Fully Upgraded";
+                StartCoroutine(WaitingTillReady(5f));
+            }
+
+            ui.GetComponent<UIController>().tierUp = false;
+            ui.GetComponent<UIController>().monies = ui.GetComponent<UIController>().monies-
+                                                     ui.GetComponent<UIController>().price;
+        }
+        else
+        {
+            ui.GetComponent<UIController>().taunt.text = "Click the Green Button to Upgrade";
+            StartCoroutine(WaitingTillReady(5f));
+        }
+    }
+    IEnumerator WaitingTillReady(float sec)
+    {
+        yield return new WaitForSecondsRealtime(sec);
+        ui.GetComponent<UIController>().taunt.text = "";
     }
 }

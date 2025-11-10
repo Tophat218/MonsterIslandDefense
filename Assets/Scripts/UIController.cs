@@ -20,19 +20,23 @@ public class UIController : MonoBehaviour
     public Button placeStrike;
 
     public Button placeZap;
+    public Button upgrade;
 
     public int Towertype;
     public int monies;
-    [SerializeField] private int lvl = 4;
+    [SerializeField] private int lvl = 0;
 
     public GameObject enemyScout;
     public GameObject enemyTank;
     public GameObject enemyCyote;
+    public GameObject enemyProcedure;
     [SerializeField] private GameObject gameMap;
     public int pricePulse = 5;
     public int priceStrike = 10;
     public int priceZap = 15;
+    public int priceUp = 10;
     public bool placing = false;
+    public bool tierUp = false;
     public int price;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -54,7 +58,10 @@ public class UIController : MonoBehaviour
         placeZap.onClick.AddListener(onZapClick);
         placeZap.GetComponentInChildren<TextMeshProUGUI>().text = priceZap + " \u25a1\u00b0";
         
-        
+        upgrade.onClick.AddListener(onUpgradeClick);
+        upgrade.GetComponentInChildren<TextMeshProUGUI>().text = priceUp + " \u25a1\u00b0";
+
+
     }
 
     // Update is called once per frame
@@ -74,6 +81,7 @@ public class UIController : MonoBehaviour
         int normal = 1;
         int tankNum = 0;
         int cyoteNum = 0;
+        int proNum = 0;
         if (pulse != null)
         {
             cyoteNum += 1;
@@ -85,6 +93,29 @@ public class UIController : MonoBehaviour
         if (zap != null)
         {
             tankNum += 1;
+        }
+
+        if (lvl >= 6)
+        {
+            proNum = 1;
+            if (lvl % 2 == 0 && lvl != 6)
+            {
+                int num = lvl - 6;
+                num = num / 2;
+                proNum += num;
+            }
+            else
+            {
+                proNum = 1;
+            }
+            for (int i = 0; i <= proNum; i++)
+            {
+                enemies.Add(enemyProcedure);
+            }
+        }
+        else
+        {
+            proNum = 0;
         }
 
         normal = normal * lvl;
@@ -159,6 +190,8 @@ public class UIController : MonoBehaviour
         else
         {
             placing = false;
+            taunt.text = "Not enough Money";
+            StartCoroutine(WaitingText(5f));
         }
         
     }
@@ -174,6 +207,8 @@ public class UIController : MonoBehaviour
         else
         {
             placing = false;
+            taunt.text = "Not enough Money";
+            StartCoroutine(WaitingText(5f));
         }
     }
 
@@ -188,6 +223,23 @@ public class UIController : MonoBehaviour
         else
         {
             placing = false;
+            taunt.text = "Not enough Money";
+            StartCoroutine(WaitingText(5f));
+        }
+    }
+
+    void onUpgradeClick()
+    {
+        price = priceUp;
+        if (monies >= price)
+        {
+            tierUp = true;
+        }
+        else
+        {
+            tierUp = false;
+            taunt.text = "Not enough Money";
+            StartCoroutine(WaitingText(5f));
         }
     }
 
@@ -202,5 +254,10 @@ public class UIController : MonoBehaviour
         taunt.text = "Game Over";
         restart.enabled = true;
         restart.gameObject.SetActive(true);
+    }
+    IEnumerator WaitingText(float sec)
+    {
+        yield return new WaitForSecondsRealtime(sec);
+        taunt.text = "";
     }
 }

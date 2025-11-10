@@ -44,7 +44,7 @@ public class BuildingScript : MonoBehaviour
         }
         else
         {
-            ui.GetComponent<UIController>().taunt.text = "Not enough Money / Click the buttons";
+            ui.GetComponent<UIController>().taunt.text = "Click the buttons";
             StartCoroutine(WaitingTillReady(5f));
         }
         
